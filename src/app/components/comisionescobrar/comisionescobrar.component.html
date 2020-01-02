@@ -1,0 +1,72 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{titulo_modal}}</h5>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body fondomodal">
+          <div id="accordion">
+            <div class="card">
+              <div *ngFor="let item of comisiones;let i = index">
+                <div class="card-header" id="heading">
+                  <h5 class="mb-2">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" [attr.data-target]="'#'+contratos[i][0]" aria-expanded="false" aria-controls="collapse">
+                      Contrato: <span style="color: darkgreen;">{{contratos[i][0]}}</span>
+                    </button>
+                  </h5>
+                </div>
+                <div [id]="contratos[i][0]" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                  <div class="card-body fondomodal">
+                    <div *ngFor="let value of values[i];let y = index">
+
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 mb-2">
+                          <button class="btn btn-light btn-block" type="button" data-toggle="collapse" [attr.data-target]="'#'+contratos[i][0]+y" aria-expanded="false" [attr.aria-controls]="contratos[i][0]+y">{{value.fecha_vencimiento_text}}</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 mb-2">
+                          <div class="collapse multi-collapse" [id]="contratos[i][0]+y">
+                            <div class="card card-body cardcollap" >
+                              <p class="cardColorText" style="text-align: center;">{{value.contrato2}}</p>
+                              <p class="cardColorText">Comisión: {{value.saldo_comision | currency}}</p>
+                              <p class="cardColorText">Vencimiento: {{value.fecha_text}}</p>
+                            </div>
+                          </div>
+                      </div>      
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-muted" style="float: right;">
+                    Total contrato: {{totales[i] | currency}}
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+        <div class="modal-footer text-muted" style="float: right;">
+            Total comisiones: {{total_comisiones_por_cobrar | currency}}
+        </div>
+</ng-template>
+
+
+<div class="card fondo">
+  <div class="card-header">
+    {{titulo_modal}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Nombre de asociado: {{repAsociados[0].nombre}}</h5>
+    <!-- <div class="form-group">
+      <label for="datepicker" class="col-form-label">Fecha:</label>
+      <input type="text" id="datepicker" class="form-control" readonly #fecha>
+    </div> -->
+    <div class="form-group">
+      <label for="dateOfBirth">Fecha limite:</label>
+      <div class="input-group">
+        <input id="dateOfBirth" class="form-control" placeholder="YYYY-MM-DD" name="dp" ngbDatepicker #dp="ngbDatepicker" readonly (click)="dp.toggle()" #fecha>
+      </div>
+    </div>
+    <button class="btn btn-light" style="float: right;" (click)="calcularComisiones(content)">Calcular comisiones</button>
+  </div>
+</div>
+

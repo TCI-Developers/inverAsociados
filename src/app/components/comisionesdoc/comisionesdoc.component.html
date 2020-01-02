@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header">
+    {{titulo_modal}}
+    <p style="margin: 0;float: right;"><span id="fondo_span">No. documentos: <span style="color: darkgreen;margin: 0px;">{{no_contratos_comisiones}}</span></span></p>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Total de comisiones por contratos: {{total_comisiones | currency}}</h5>
+    <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#comisionesdoc">Consultar</a>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" id="comisionesdoc">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{titulo_modal}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Doc</th>
+                <th scope="col">Asociado</th>
+                <th scope="col">Vencimiento</th>
+                <th scope="col">Saldo comision</th>
+                <th scope="col">Contrato</th>
+                <th scope="col">Nombre reembolso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let documento of argsComisionesDocs">
+                <th scope="row">{{documento.no_doc}}</th>
+                <td>{{documento.related_contrato___asociado_1}}</td>
+                <td>{{documento.fecha_vencimiento_text}}</td>
+                <td>{{documento.saldo_comision | currency}}</td>
+                <td>{{documento.related_contrato2 }}</td>
+                <td>{{documento.nombre_reembolso}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <th></th>
+                <th>{{total_comisiones | currency}}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

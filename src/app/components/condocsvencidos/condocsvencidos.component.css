@@ -1,0 +1,16 @@
+.card{
+    color: white;
+    background-color: rgba(0,0,0,0.6) !important;
+    margin: 10px 10px;
+}
+.size{
+    width: 90px;
+}
+span#fondo_span{
+    background-color:rgba(255,255,255,0.5); 
+    color: black; 
+    display: inline-block; 
+    padding: 3px 10px; 
+    font-weight: bold; 
+    border-radius: 5px;
+}

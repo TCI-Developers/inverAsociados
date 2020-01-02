@@ -1,0 +1,28 @@
+.fondo{
+    color: white;
+    background-color: rgba(0,0,0,0.6) !important;
+    margin: 10px 10px;
+} 
+
+.fondomodal{
+    color: white;
+    background-color: rgba(0,0,0,0.9) !important;
+    margin: 10px 10px;
+} 
+button.btn.btn-link.collapsed {
+    color: black  !important;;
+}
+h5.mb-2 {
+    background: rgba(0,0,0,0.1) !important;
+}
+.cardcollap {
+    background: #E9EAE9;
+}
+.cardColorText{
+    color: dimgray;
+}
+/* div#heading {
+    color: white;
+    background-color: rgba(0,0,0,0.6) !important;
+    margin: 10px 10px;
+} */

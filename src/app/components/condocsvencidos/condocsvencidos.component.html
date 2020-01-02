@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-header">
+    {{titulo_modal}}
+    <p style="margin: 0;float: right;"><span id="fondo_span">No. contratos: <span style="color: red;margin: 0px;">{{contratosVencidos}}</span></span></p>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Importe total vencido: {{importeTotalVencido | currency}} </h5>
+    <h5 class="card-title">Comisión total por cobrar: {{comisionTotalCobrar | currency}}</h5>
+    <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#condocsvencidos">Consultar</a>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" id="condocsvencidos">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{titulo_modal}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Número de contrato</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">status</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Importe pago mensual</th>
+                <th scope="col">Status cobranza</th>
+                <th scope="col">Importe vencido</th>
+                <th scope="col">Comisión por cobrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let documento of argsContratos_docs_vencidos">
+                <th scope="row">{{documento.numero_de_contrato}}</th>
+                <td>{{documento.clientes___nombre}}</td>
+                <td>{{documento.status}}</td>
+                <td><div class="size">{{documento.fecha_inicio_text}}</div></td>
+                <td>{{documento.importe_pago_mensual | currency}}</td>
+                <td>{{documento.status_cobranza}}</td>
+                <td>{{documento.importe_vencido | currency}}</td>
+                <td>{{documento.comision_por_cobrar | currency}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>{{importePagomensual | currency}}</th>
+                <td></td>
+                <th>{{importeTotalVencido | currency}}</th>
+                <th>{{comisionTotalCobrar | currency}}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-header">
+    {{titulo_modal}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Nombre de asociado: {{repAsociados[0].nombre}}</h5>
+    <h5 class="card-title">Acumulado de comisiones: {{repAsociados[0].acumulado_comisiones | currency}}</h5>
+    <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#repasociados">Consultar</a>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" id="repasociados">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{titulo_modal}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Comisión general</th>
+                <th scope="col">Comisión mixta</th>
+                <th scope="col">Comisión mixta 2</th>
+                <th scope="col">Acumulado de comisiones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{repAsociados[0].nombre}}</th>
+                <th *ngIf="isObjectEmpty(repAsociados[0].e_mail)">{{repAsociados[0].e_mail}}</th>
+                <th *ngIf="!isObjectEmpty(repAsociados[0].e_mail)"></th>
+                <th>{{repAsociados[0].comision_general | currency}}</th>
+                <th *ngIf="isObjectEmpty(repAsociados[0].comision_mixta)">{{repAsociados[0].comision_mixta}}</th>
+                <th *ngIf="!isObjectEmpty(repAsociados[0].comision_mixta)"></th>
+                <th *ngIf="isObjectEmpty(repAsociados[0].comision_mixta_asociado_2)">{{repAsociados[0].comision_mixta_asociado_2}}</th>
+                <th *ngIf="!isObjectEmpty(repAsociados[0].comision_mixta_asociado_2)"></th>
+                <th>{{repAsociados[0].acumulado_comisiones | currency}}</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
