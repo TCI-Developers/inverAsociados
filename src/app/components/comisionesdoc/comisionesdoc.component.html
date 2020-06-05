@@ -32,11 +32,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let documento of argsComisionesDocs">
+              <tr *ngFor="let documento of auxArgsComisionesDocs">
                 <th scope="row">{{documento.no_doc}}</th>
                 <td>{{documento.related_contrato___asociado_1}}</td>
                 <td>{{documento.fecha_vencimiento_text}}</td>
-                <td>{{documento.saldo_comision | currency}}</td>
+                <td *ngIf="documento.related_contrato___asociado_1 != ''">{{documento.saldo_comision | currency}}</td>
+                <th *ngIf="documento.related_contrato___asociado_1 == ''">{{documento.saldo_comision | currency}}</th>
                 <td>{{documento.related_contrato2 }}</td>
                 <td>{{documento.nombre_reembolso}}</td>
               </tr>
