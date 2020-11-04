@@ -23,8 +23,14 @@ export class CondocsvencidosComponent implements OnInit {
     this.contratosVencidos = this.argsContratos_docs_vencidos.length;
     this.argsContratos_docs_vencidos.forEach( documento =>{
       this.importeTotalVencido += Number(documento.importe_vencido);
-      this.comisionTotalCobrar +=  Number(documento.comision_por_cobrar);
+      if(this.isObjectEmpty(documento.comision_por_cobrar))
+        this.comisionTotalCobrar +=  Number(documento.comision_por_cobrar);
       this.importePagomensual += Number(documento.importe_pago_mensual);
     });
   }
+
+  isObjectEmpty(object){
+    return !!Object.keys(object).length;
+  }
+
 }

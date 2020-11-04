@@ -15,6 +15,7 @@ import { RepasociadoComponent } from './components/repasociado/repasociado.compo
 import { ContractivosComponent } from './components/contractivos/contractivos.component';
 import { ComisionescobrarComponent } from './components/comisionescobrar/comisionescobrar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClientesasociadosComponent } from './components/clientesasociados/clientesasociados.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ComisionesdocComponent,
     RepasociadoComponent,
     ContractivosComponent,
-    ComisionescobrarComponent
+    ComisionescobrarComponent,
+    ClientesasociadosComponent
     
   ],
   imports: [

@@ -22,4 +22,7 @@ export class QueriesService {
   getComisionesporCobrar(clave,fecha){
     return this.http.get(`https://tciconsultoria.com.mx/Inver/asociados/comisiones-cobrar.php?clave_promotor=${clave}&fecha=${fecha}`);
   }
+  getClientesAsociados(clave){
+    return this.http.get(`https://tciconsultoria.com.mx/Inver/asociados/clientes-asociados.php?clave_promotor=${clave}`);
+  }
 }

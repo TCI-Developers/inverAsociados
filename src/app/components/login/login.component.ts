@@ -35,7 +35,10 @@ export class LoginComponent implements OnInit {
                   await localStorage.setItem('comisiones_documentos',JSON.stringify(response));
                     await this.queriesService.getContratosActivos(form.value['clave']).subscribe( async (response:any) =>{
                       await localStorage.setItem('contratos_activos',JSON.stringify(response));
-                      await this.route.navigate(['/inicio']);
+                        await this.queriesService.getClientesAsociados(form.value['clave']).subscribe(async (response:any) =>{
+                          await localStorage.setItem('clientes_asociados',JSON.stringify(response));
+                          await this.route.navigate(['/inicio']);
+                        });
                     });
                 });
             });

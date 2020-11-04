@@ -1,0 +1,20 @@
+<div class="card fondo">
+    <div class="card-header">
+      {{titulo_modal}}
+      <p style="margin: 0;float: right;"><span id="fondo_span">No. Clientes: <span style="color: darkgreen;margin: 0px;">{{noClientes}}</span></span></p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Consultar estado de cuenta</h5>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Selecciona cliente:</label>
+            <select class="form-control" [(ngModel)]="clienteSeleccionado">
+              <option value="false" disabled>Selecciona cliente...</option>
+              <option *ngFor="let cliente of argsClientes" [value]="cliente.record_id_">{{cliente.nombre}}</option>
+            </select>
+          </div>
+
+      <a class="btn btn-light" style="float: right;color: black;" href="{{consultaCuenta()}}" target="_blank" *ngIf="clienteSeleccionado != null">Consultar</a>
+</div>
+
+    

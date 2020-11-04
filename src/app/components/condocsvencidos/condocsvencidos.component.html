@@ -40,10 +40,10 @@
                 <td>{{documento.clientes___nombre}}</td>
                 <td>{{documento.status}}</td>
                 <td><div class="size">{{documento.fecha_inicio_text}}</div></td>
-                <td>{{documento.importe_pago_mensual | currency}}</td>
-                <td>{{documento.status_cobranza}}</td>
-                <td>{{documento.importe_vencido | currency}}</td>
-                <td>{{documento.comision_por_cobrar | currency}}</td>
+                <td *ngIf="isObjectEmpty(documento.importe_pago_mensual)">{{documento.importe_pago_mensual | currency}}</td>
+                <td *ngIf="isObjectEmpty(documento.status_cobranza)">{{documento.status_cobranza}}</td>
+                <td *ngIf="isObjectEmpty(documento.importe_vencido)">{{documento.importe_vencido | currency}}</td>
+                <td *ngIf="isObjectEmpty(documento.comision_por_cobrar)">{{documento.comision_por_cobrar | currency}}</td>
               </tr>
             </tbody>
             <tfoot>
